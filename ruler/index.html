@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vyraxas Ruler Mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      overflow: hidden;
+    }
+    #horizontal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 20px;
+      display: flex;
+      align-items: flex-start;
+      z-index: 10;
+    }
+    #vertical {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      width: 40px;
+      height: calc(100vh - 20px);
+      overflow: hidden;
+      z-index: 10;
+    }
+    .h-tick {
+      width: 50px;
+      text-align: center;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+    .v-tick {
+      height: 50px;
+      font-size: 10px;
+      opacity: 0.6;
+    }
+    #grid {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 50px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.05) 1px,
+        transparent 1px,
+        transparent 50px
+      );
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="horizontal">
+    <div style="width:40px"></div>
+    <div style="display: flex; flex: 1">
+      <script>
+        for (let i = 0; i < window.innerWidth; i += 50) {
+          document.write(`<div class="h-tick">${i}</div>`);
+        }
+      </script>
+    </div>
+  </div>
+  <div id="vertical">
+    <div style="display: flex; flex-direction: column;">
+      <script>
+        for (let i = 0; i < window.innerHeight; i += 50) {
+          document.write(`<div class="v-tick">${i}</div>`);
+        }
+      </script>
+    </div>
+  </div>
+  <div id="grid"></div>
+</body>
+</html>
