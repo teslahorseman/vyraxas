@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vyraxas Screen Ruler</title>
+  <title>Vyraxas Screen Ruler - Fine Grid</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -28,12 +28,31 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+    // Draw minor vertical grid lines every 10px (light gray)
     ctx.strokeStyle = '#ccc';
+    for (let x = 10; x < canvas.width; x += 10) {
+      if (x % 50 !== 0) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+    }
+
+    // Draw minor horizontal grid lines every 10px (light gray)
+    for (let y = 10; y < canvas.height; y += 10) {
+      if (y % 50 !== 0) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+
+    // Draw major vertical grid lines every 50px (black) with labels
+    ctx.strokeStyle = '#000';
     ctx.fillStyle = '#000';
     ctx.font = '10px monospace';
-    ctx.lineWidth = 1;
-
-    // Draw vertical lines every 50px with labels
     for (let x = 0; x < canvas.width; x += 50) {
       ctx.beginPath();
       ctx.moveTo(x, 0);
@@ -42,7 +61,7 @@
       ctx.fillText(x, x + 2, 10);
     }
 
-    // Draw horizontal lines every 50px with labels
+    // Draw major horizontal grid lines every 50px (black) with labels
     for (let y = 0; y < canvas.height; y += 50) {
       ctx.beginPath();
       ctx.moveTo(0, y);
@@ -51,7 +70,7 @@
       ctx.fillText(y, 2, y - 2);
     }
 
-    // Draw origin point (0,0)
+    // Mark the origin (0,0)
     ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.arc(0, 0, 4, 0, 2 * Math.PI);
