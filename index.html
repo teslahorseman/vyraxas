@@ -43,9 +43,32 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Vyraxas",
-    "url": "https://vyraxas.com/"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://vyraxas.com/#website",
+        "name": "Vyraxas",
+        "url": "https://vyraxas.com/"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://vyraxas.com/#webpage",
+        "url": "https://vyraxas.com/",
+        "name": "Vyraxas — Black Dragon at the Edge of Storm",
+        "isPartOf": {
+          "@id": "https://vyraxas.com/#website"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "@id": "https://vyraxas.com/#primaryimage",
+          "contentUrl": "https://vyraxas.com/vyraxas-black-dragon.png",
+          "url": "https://vyraxas.com/vyraxas-black-dragon.png",
+          "width": 1180,
+          "height": 920,
+          "caption": "Vyraxas, a black dragon with storm-lit eyes, standing in mist and lightning"
+        }
+      }
+    ]
   }
   </script>
 
@@ -70,8 +93,10 @@
 
 <body>
   <img
-    src="vyraxas-black-dragon.png"
+    src="/vyraxas-black-dragon.png"
     alt="Vyraxas, a black dragon with storm-lit eyes, standing in mist and lightning"
+    width="1180"
+    height="920"
     fetchpriority="high"
   >
 </body>
